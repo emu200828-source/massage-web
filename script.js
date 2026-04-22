@@ -83,28 +83,6 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-// ===== FORM SUBMISSION =====
-const contactForm = document.getElementById('contact-form');
-const formSuccess = document.getElementById('form-success');
-
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  // Simulasi pengiriman form
-  const formData = new FormData(contactForm);
-  
-  // Tampilkan pesan sukses
-  formSuccess.classList.add('show');
-  
-  // Reset form
-  contactForm.reset();
-  
-  // Sembunyikan pesan setelah 5 detik
-  setTimeout(() => {
-    formSuccess.classList.remove('show');
-  }, 5000);
-});
-
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
