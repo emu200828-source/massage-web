@@ -20,6 +20,76 @@
   --transition: all 0.3s ease;
 }
 
+[data-theme="dark"] {
+  --primary: #7fb069;
+  --primary-light: #6a9a5e;
+  --primary-dark: #a8d5a3;
+  --accent: #5a8c4f;
+  --bg-light: #1a1f1a;
+  --bg-white: #242924;
+  --text-dark: #e8f5e3;
+  --text-gray: #a8b5a8;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(26, 31, 26, 0.95);
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #1a1f1a 0%, #242924 50%, #2d3e2f 100%);
+}
+
+[data-theme="dark"] .hero::before,
+[data-theme="dark"] .hero::after {
+  opacity: 0.3;
+}
+
+[data-theme="dark"] .card {
+  background: #2d3e2f;
+}
+
+[data-theme="dark"] .card-icon {
+  background: linear-gradient(135deg, #5a8c4f, #7fb069);
+}
+
+[data-theme="dark"] .about-img-bg {
+  background: linear-gradient(135deg, #2d3e2f 0%, #3a4f3a 100%);
+}
+
+[data-theme="dark"] .about-badge,
+[data-theme="dark"] .stat {
+  background: #2d3e2f;
+}
+
+[data-theme="dark"] .info-item,
+[data-theme="dark"] .contact-form {
+  background: #2d3e2f;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: #1a1f1a;
+  border-color: rgba(127, 176, 105, 0.3);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .form-success {
+  background: #2d3e2f;
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .footer {
+  background: #0f120f;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: #2d3e2f;
+  border-color: rgba(127, 176, 105, 0.3);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -111,6 +181,34 @@ h1, h2, h3, h4 {
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-light);
+  border: 2px solid rgba(127, 176, 105, 0.2);
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: rotate(20deg);
 }
 
 .hamburger {
@@ -678,6 +776,12 @@ h1, h2, h3, h4 {
 
 /* Mobile Landscape & Small Tablet (481px - 768px) */
 @media (max-width: 768px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
   .hamburger {
     display: flex;
     z-index: 1001;

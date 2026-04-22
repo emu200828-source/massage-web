@@ -1,3 +1,36 @@
+// ===== DARK MODE TOGGLE =====
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+// Cek tema yang tersimpan di localStorage
+const currentTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', currentTheme);
+
+// Update icon berdasarkan tema
+function updateThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i');
+  if (theme === 'dark') {
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  }
+}
+
+// Set icon awal
+updateThemeIcon(currentTheme);
+
+// Toggle tema saat tombol diklik
+themeToggle.addEventListener('click', () => {
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+});
+
 // ===== NAVBAR TOGGLE (MOBILE) =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
