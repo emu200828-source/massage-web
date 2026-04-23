@@ -751,11 +751,13 @@ h1, h2, h3, h4 {
   justify-content: center;
   color: white;
   transition: var(--transition);
+  text-decoration: none;
 }
 
 .social-links a:hover {
   background: var(--primary);
   transform: translateY(-3px);
+  text-decoration: none;
 }
 
 .footer-links h4 {
