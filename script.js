@@ -31,6 +31,74 @@ themeToggle.addEventListener('click', () => {
   updateThemeIcon(newTheme);
 });
 
+// ===== FALLING LEAVES ANIMATION =====
+function createFallingLeaves() {
+  const leavesContainer = document.querySelector('.falling-leaves');
+  if (!leavesContainer) return;
+
+  const leafSymbols = ['🍃', '🌿'];
+  const leafCount = window.innerWidth < 768 ? 8 : 15; // Lebih sedikit di mobile
+  
+  function createLeaf() {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    
+    // Random leaf symbol
+    leaf.textContent = leafSymbols[Math.floor(Math.random() * leafSymbols.length)];
+    
+    // Random size
+    const sizes = ['small', 'medium', 'large'];
+    const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+    leaf.classList.add(randomSize);
+    
+    // Random blur for depth
+    if (Math.random() > 0.6) {
+      leaf.classList.add('blur');
+    }
+    
+    // Random horizontal position
+    leaf.style.left = Math.random() * 100 + '%';
+    
+    // Random animation duration (slower = more calming)
+    const duration = 15 + Math.random() * 15; // 15-30 seconds
+    leaf.style.animationDuration = duration + 's';
+    
+    // Random delay
+    leaf.style.animationDelay = Math.random() * 5 + 's';
+    
+    // Random drift (horizontal movement)
+    const drift = (Math.random() - 0.5) * 100; // -50px to 50px
+    leaf.style.setProperty('--drift', drift + 'px');
+    
+    // Random rotation
+    const rotation = Math.random() * 360;
+    leaf.style.setProperty('--rotation', rotation + 'deg');
+    
+    leavesContainer.appendChild(leaf);
+  }
+  
+  // Create initial leaves
+  for (let i = 0; i < leafCount; i++) {
+    setTimeout(() => createLeaf(), i * 500);
+  }
+}
+
+// Initialize falling leaves when page loads
+window.addEventListener('load', createFallingLeaves);
+
+// Recreate leaves on window resize (debounced)
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const leavesContainer = document.querySelector('.falling-leaves');
+    if (leavesContainer) {
+      leavesContainer.innerHTML = '';
+      createFallingLeaves();
+    }
+  }, 500);
+});
+
 // ===== NAVBAR TOGGLE (MOBILE) =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');

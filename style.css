@@ -260,6 +260,79 @@ h1, h2, h3, h4 {
   background-size: cover;
 }
 
+/* ===== FALLING LEAVES ANIMATION ===== */
+.falling-leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.leaf {
+  position: absolute;
+  top: -50px;
+  font-size: 20px;
+  color: #a8d5a3;
+  opacity: 0.6;
+  animation: fall linear infinite;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) translateX(var(--drift)) rotate(var(--rotation));
+    opacity: 0;
+  }
+}
+
+/* Leaf variations */
+.leaf.small {
+  font-size: 16px;
+  opacity: 0.4;
+}
+
+.leaf.medium {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.leaf.large {
+  font-size: 28px;
+  opacity: 0.7;
+}
+
+.leaf.blur {
+  filter: blur(1px);
+}
+
+/* Dark mode leaves */
+[data-theme="dark"] .leaf {
+  color: #5a8c4f;
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .leaf.small {
+  opacity: 0.3;
+}
+
+[data-theme="dark"] .leaf.medium {
+  opacity: 0.4;
+}
+
+[data-theme="dark"] .leaf.large {
+  opacity: 0.6;
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
